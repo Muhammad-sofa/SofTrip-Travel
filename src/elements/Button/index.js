@@ -3,6 +3,32 @@ import { Link } from 'react-router-dom'
 import propTypes from 'prop-types'
 
 export default function Button(props) {
+     const className = [props.className];
+     if (props.isPrimary) className.push("btn-primary");
+     if (props.isLarge) className.push("btn-lg");
+     if (props.isSmall) className.push("btn-sm");
+     if (props.isBlock) className.push("btn-block");
+     if (props.isShadow) className.push("btn.shadow");
+
+     //Untuk menghendel onclick
+     const onClick = () => {
+          if (props.onclick) props.onclick();
+     }
+
+     if(props.type === "link") {
+          if(props.isExternal) {
+               return(
+                    <a href={props.href} className={className.join(" ")} style={props.style} target={props.target === "_blank" ? "noopener noreferrer":undefined} rel={props.target === "_blank" ?"_blank":undefined}>{props.children}</a>
+               )
+          } else {
+               return (
+                    <link to={props.href} className={className.join(" ")} style={props.style} onClick={onClick} target={props.target === "_blank" ? "noopener noreferrer":undefined} rel={props.target === "_blank" ?"_blank":undefined}>
+                         {props.children}
+                    </link>
+               )
+          }
+     }
+
      return (
           <div>
           
@@ -13,6 +39,7 @@ export default function Button(props) {
 Button.propTypes = {
      type: propTypes.oneOf(["button", "link"]),
      onclick: propTypes.func,
+     href: propTypes.string,
      target: propTypes.string,
      className: propTypes.string,
      isDisabled: propTypes.bool,
