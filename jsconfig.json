@@ -1,0 +1,9 @@
+// untuk memudahkan import
+
+{
+     "compilerOptions": {
+          "baseUrl": "src",
+     },
+
+     "include": ["src/**/*"]
+}
