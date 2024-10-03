@@ -86,6 +86,12 @@ header {
                                    text-decoration: underline;
                               }
                          }
+                         &.nav-link-active {
+                              letter-spacing: normal;
+                              color: $gray-100;
+                              padding-left: 1rem;
+                              padding-right: 1rem;
+                         }
                     }
                }
           }
